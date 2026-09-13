@@ -14,6 +14,28 @@ annotated tag, and pushes it. The push triggers
 `.github/workflows/release.yml` (`v*.*.*` and `v*.*.*-*` prerelease tags),
 which runs goreleaser.
 
+## Publishing targets
+
+Two artifacts are published outside this repo's own GitHub release:
+
+- **Homebrew cask → `candy-tools/homebrew-tap`.** The darwin run's
+  `homebrew_casks` block commits `Casks/govi.rb` into the shared org tap (not
+  this repo). Pushing to another repo needs a cross-repo PAT exposed as the
+  `HOMEBREW_TAP_GITHUB_TOKEN` secret, set on the `release-darwin` job; the
+  default `GITHUB_TOKEN` is scoped to this repo only. Users install with
+  `brew tap candy-tools/tap && brew install --cask candy-tools/tap/govi`.
+- **`.deb` → `candy-tools/debian-repo`.** After the linux run builds and uploads
+  the amd64 `.deb`, the `Register the .deb with the Debian repo` step calls
+  `candy-tools/debian-repo/.github/actions/register@main`, which writes
+  `packages/govi.json` (URL + sha256) into the APT repo and triggers its
+  publish. Needs a cross-repo PAT as the `DEBIAN_REPO_TOKEN` secret. amd64 only
+  for now — govi's cgo build has no arm64 target. Users install per the
+  debian-repo README (add the keyring + `candy-tools.sources`, then
+  `apt install govi`).
+
+Both secrets are required for a release to succeed; without them the respective
+job fails at tag-push time.
+
 ## Build constraints
 
 - **Two independent goreleaser runs, one release.** govi links libmpv via cgo, so
@@ -175,9 +197,11 @@ How the pieces fit, and why each is the way it is:
 - **`CFBundleVersion` is dotted-numeric only** — `0.1.5-rc1` is not a legal
   value; the suffix lives in `CFBundleShortVersionString` instead. Homebrew
   compares bundle versions to decide whether an upgrade is a no-op.
-- **`com.andresbott.govi` must never change.** macOS keys Launch Services
+- **`com.candy-tools.govi` must never change.** macOS keys Launch Services
   registration, saved window frames and granted permissions on the bundle id;
-  changing it makes every upgrade look like a different application.
+  changing it makes every upgrade look like a different application. It was
+  rebranded once, during the move to the candy-tools org (safe only because no
+  macOS release had shipped yet); it is frozen from here on.
 - **The `.icns` is generated, not committed.** Sizes 512 and 1024 were rendered
   from `zarf/govi.svg` and committed as PNGs alongside the existing ones,
   because the Dock and Finder's icon view visibly upscale a 256px icon. Re-render
