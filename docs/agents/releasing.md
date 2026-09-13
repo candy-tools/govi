@@ -23,7 +23,7 @@ Two artifacts are published outside this repo's own GitHub release:
   this repo). Pushing to another repo needs a cross-repo PAT exposed as the
   `HOMEBREW_TAP_GITHUB_TOKEN` secret, set on the `release-darwin` job; the
   default `GITHUB_TOKEN` is scoped to this repo only. Users install with
-  `brew tap candy-tools/tap && brew install --cask candy-tools/tap/govi`.
+  `brew tap candy-tools/tap && brew trust candy-tools/tap && brew install --cask candy-tools/tap/govi`.
 - **`.deb` → `candy-tools/debian-repo`.** After the linux run builds and uploads
   the amd64 `.deb`, the `Register the .deb with the Debian repo` step calls
   `candy-tools/debian-repo/.github/actions/register@main`, which writes
