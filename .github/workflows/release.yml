@@ -73,6 +73,9 @@ jobs:
           args: release --clean --config .goreleaser.darwin.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # cross-repo PAT so goreleaser can push the cask to candy-tools/homebrew-tap;
+          # the default GITHUB_TOKEN is scoped to this repo only.
+          HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
 
       - name: Show the resulting libmpv linkage
         # makes the real dylib paths visible in the log of every release: they
