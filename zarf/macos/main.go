@@ -29,7 +29,7 @@ const (
 	// bundleID keys every piece of per-app state macOS keeps (Launch Services
 	// registration, window frames, granted permissions). Changing it makes
 	// macOS treat an upgrade as a different application.
-	bundleID = "com.andresbott.govi"
+	bundleID = "com.candy-tools.govi"
 	// minSystem is the oldest macOS the arm64 build targets. 12.0 because that is
 	// Go's floor (go1.26 is the last release to run on macOS 12 at all), and
 	// Apple Silicon shipped with 11.0, so nothing this excludes could have run
