@@ -18,9 +18,9 @@ builds:
       - -trimpath
     ldflags:
       - -s -w
-      - -X github.com/andresbott/govi/app/metainfo.Version={{.Version}}
-      - -X github.com/andresbott/govi/app/metainfo.BuildTime={{.Date}}
-      - -X github.com/andresbott/govi/app/metainfo.ShaVer={{.Commit}}
+      - -X github.com/candy-tools/govi/app/metainfo.Version={{.Version}}
+      - -X github.com/candy-tools/govi/app/metainfo.BuildTime={{.Date}}
+      - -X github.com/candy-tools/govi/app/metainfo.ShaVer={{.Commit}}
     binary: govi
 
 archives:
@@ -46,7 +46,7 @@ nfpms:
     formats:
       - deb
     maintainer: "Andres Bott <contact@andresbott.com>"
-    homepage: "https://github.com/andresbott/govi"
+    homepage: "https://github.com/candy-tools/govi"
     description: "Minimalistic video player based on mpv"
     license: "GPL-3.0"
     section: video

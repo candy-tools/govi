@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/internal/logging"
 	mpv "github.com/gen2brain/go-mpv"
 )
 

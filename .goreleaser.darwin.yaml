@@ -41,9 +41,9 @@ builds:
       - -trimpath
     ldflags:
       - -s -w
-      - -X github.com/andresbott/govi/app/metainfo.Version={{.Version}}
-      - -X github.com/andresbott/govi/app/metainfo.BuildTime={{.Date}}
-      - -X github.com/andresbott/govi/app/metainfo.ShaVer={{.Commit}}
+      - -X github.com/candy-tools/govi/app/metainfo.Version={{.Version}}
+      - -X github.com/candy-tools/govi/app/metainfo.BuildTime={{.Date}}
+      - -X github.com/candy-tools/govi/app/metainfo.ShaVer={{.Commit}}
     # a path, not a plain name: goreleaser writes the binary to
     # dist/<id>_<target>/<binary>, so this lays out the Contents/MacOS/ level of
     # the .app in place, and the archive below inherits the same relative path
@@ -113,12 +113,12 @@ homebrew_casks:
     commit_author:
       name: Andres Bott
       email: contact@andresbott.com
-    homepage: "https://github.com/andresbott/govi"
+    homepage: "https://github.com/candy-tools/govi"
     description: "Minimalistic video player based on mpv"
     url:
       # needed for `brew audit` to pass, since the download and homepage
       # domains differ in form.
-      verified: github.com/andresbott/govi/
+      verified: github.com/candy-tools/govi/
     dependencies:
       # mpv is what supplies libmpv.2.dylib at runtime.
       - formula: mpv

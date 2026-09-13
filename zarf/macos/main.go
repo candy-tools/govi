@@ -18,9 +18,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/andresbott/govi/zarf/macos/bundle"
-	"github.com/andresbott/govi/zarf/macos/dmg"
-	"github.com/andresbott/govi/zarf/macos/icns"
+	"github.com/candy-tools/govi/zarf/macos/bundle"
+	"github.com/candy-tools/govi/zarf/macos/dmg"
+	"github.com/candy-tools/govi/zarf/macos/icns"
 )
 
 const (

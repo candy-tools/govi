@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/andresbott/govi/app/player"
+	"github.com/candy-tools/govi/app/player"
 	"github.com/go-bumbu/config"
 	"gopkg.in/yaml.v3"
 )

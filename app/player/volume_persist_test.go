@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/internal/logging"
 )
 
 // startVolume is the level mpv starts at: the configured one when the user has a

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/andresbott/govi/app/player"
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/app/player"
+	"github.com/candy-tools/govi/internal/logging"
 )
 
 // Logs emitted while the command runs must land in the ring buffer (so a crash
