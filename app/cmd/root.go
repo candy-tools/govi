@@ -11,9 +11,9 @@ import (
 	"runtime/debug"
 	"syscall"
 
-	"github.com/andresbott/govi/app/metainfo"
-	"github.com/andresbott/govi/app/player"
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/app/metainfo"
+	"github.com/candy-tools/govi/app/player"
+	"github.com/candy-tools/govi/internal/logging"
 	"github.com/spf13/cobra"
 )
 

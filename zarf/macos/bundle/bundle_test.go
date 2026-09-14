@@ -27,7 +27,7 @@ func TestBuildLayout(t *testing.T) {
 		Icns:   []byte("icns-payload"),
 		Info: Info{
 			Name:            "govi",
-			Identifier:      "com.andresbott.govi",
+			Identifier:      "com.candy-tools.govi",
 			Version:         "0.1.5",
 			Executable:      "govi",
 			Icon:            "govi.icns",
@@ -87,7 +87,7 @@ func TestBuildIconNaming(t *testing.T) {
 				Icns:   []byte("icns"),
 				Info: Info{
 					Name:       "govi",
-					Identifier: "com.andresbott.govi",
+					Identifier: "com.candy-tools.govi",
 					Executable: "govi",
 					Icon:       tc.icon,
 				},
@@ -106,7 +106,7 @@ func TestBuildIconNaming(t *testing.T) {
 func TestBuildOverwritesExistingBinary(t *testing.T) {
 	tmp := t.TempDir()
 	app := filepath.Join(tmp, "govi.app")
-	info := Info{Name: "govi", Identifier: "com.andresbott.govi", Executable: "govi"}
+	info := Info{Name: "govi", Identifier: "com.candy-tools.govi", Executable: "govi"}
 
 	big := filepath.Join(tmp, "big")
 	if err := os.WriteFile(big, make([]byte, 4096), 0o755); err != nil {
@@ -149,7 +149,7 @@ func TestBuildWithoutBinaryKeepsExistingPayload(t *testing.T) {
 
 	if _, err := Build(Options{
 		AppDir: app,
-		Info:   Info{Name: "govi", Identifier: "com.andresbott.govi", Executable: "govi"},
+		Info:   Info{Name: "govi", Identifier: "com.candy-tools.govi", Executable: "govi"},
 	}); err != nil {
 		t.Fatalf("Build: %v", err)
 	}
@@ -169,7 +169,7 @@ func TestBuildWithoutBinaryKeepsExistingPayload(t *testing.T) {
 func TestBuildRejects(t *testing.T) {
 	tmp := t.TempDir()
 	bin := fakeBinary(t, tmp)
-	valid := Info{Name: "govi", Identifier: "com.andresbott.govi", Executable: "govi"}
+	valid := Info{Name: "govi", Identifier: "com.candy-tools.govi", Executable: "govi"}
 
 	tests := []struct {
 		name string

@@ -38,6 +38,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Register the .deb with the Debian repo
+        # after goreleaser writes and uploads the .deb, hand it to
+        # candy-tools/debian-repo: the action writes packages/govi.json there and
+        # pushes it, triggering a publish. needs a cross-repo PAT with
+        # contents:read+write on candy-tools/debian-repo (DEBIAN_REPO_TOKEN); the
+        # default GITHUB_TOKEN is scoped to this repo only.
+        uses: candy-tools/debian-repo/.github/actions/register@main
+        with:
+          name: govi          # must match the .deb's Package field (nfpms package_name)
+          dist-dir: dist      # where goreleaser wrote the .deb
+          token: ${{ secrets.DEBIAN_REPO_TOKEN }}
+
   # govi links libmpv/GLFW through cgo, so darwin binaries must be built on
   # macOS. goreleaser OSS has no --split/--merge, so this is a second,
   # independent release run that appends its artifacts to the release the linux
@@ -73,6 +85,9 @@ jobs:
           args: release --clean --config .goreleaser.darwin.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # cross-repo PAT so goreleaser can push the cask to candy-tools/homebrew-tap;
+          # the default GITHUB_TOKEN is scoped to this repo only.
+          HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
 
       - name: Show the resulting libmpv linkage
         # makes the real dylib paths visible in the log of every release: they

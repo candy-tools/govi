@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"testing"
 
-	"github.com/andresbott/govi/app/player"
+	"github.com/candy-tools/govi/app/player"
 )
 
 // A desktop launcher (e.g. KDE) can hand govi a stderr pipe whose reader then

@@ -1,4 +1,4 @@
-module github.com/andresbott/govi
+module github.com/candy-tools/govi
 
 go 1.26.2
 

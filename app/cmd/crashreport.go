@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/andresbott/govi/app/metainfo"
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/app/metainfo"
+	"github.com/candy-tools/govi/internal/logging"
 )
 
 // crashReportFile is the crash report's name inside the govi config directory.

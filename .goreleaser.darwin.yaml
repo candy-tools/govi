@@ -41,9 +41,9 @@ builds:
       - -trimpath
     ldflags:
       - -s -w
-      - -X github.com/andresbott/govi/app/metainfo.Version={{.Version}}
-      - -X github.com/andresbott/govi/app/metainfo.BuildTime={{.Date}}
-      - -X github.com/andresbott/govi/app/metainfo.ShaVer={{.Commit}}
+      - -X github.com/candy-tools/govi/app/metainfo.Version={{.Version}}
+      - -X github.com/candy-tools/govi/app/metainfo.BuildTime={{.Date}}
+      - -X github.com/candy-tools/govi/app/metainfo.ShaVer={{.Commit}}
     # a path, not a plain name: goreleaser writes the binary to
     # dist/<id>_<target>/<binary>, so this lays out the Contents/MacOS/ level of
     # the .app in place, and the archive below inherits the same relative path
@@ -88,9 +88,10 @@ archives:
         dst: govi.app/Contents/Resources/govi.icns
 
 homebrew_casks:
-  # publish a macOS cask into this same repo (Casks/govi.rb). the repo isn't
-  # named homebrew-*, so users tap it by explicit URL — see README. the default
-  # GITHUB_TOKEN can push here.
+  # publish the macOS cask into the shared org tap (candy-tools/homebrew-tap,
+  # Casks/govi.rb). users tap it with `brew tap candy-tools/tap`. pushing to a
+  # *different* repo needs a cross-repo PAT — the default GITHUB_TOKEN is scoped
+  # to this repo only. see HOMEBREW_TAP_GITHUB_TOKEN in .github/workflows/release.yml.
   - name: govi
     # `app` cannot be expressed by any homebrew_casks field in the OSS build (it
     # exists only for Pro's dmg pipeline), so it is injected as raw Ruby. This is
@@ -107,18 +108,20 @@ homebrew_casks:
     binaries:
       - '#{appdir}/govi.app/Contents/MacOS/govi'
     repository:
-      owner: andresbott
-      name: govi
+      owner: candy-tools
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     directory: Casks
     commit_author:
       name: Andres Bott
       email: contact@andresbott.com
-    homepage: "https://github.com/andresbott/govi"
+    homepage: "https://github.com/candy-tools/govi"
     description: "Minimalistic video player based on mpv"
     url:
       # needed for `brew audit` to pass, since the download and homepage
       # domains differ in form.
-      verified: github.com/andresbott/govi/
+      verified: github.com/candy-tools/govi/
     dependencies:
       # mpv is what supplies libmpv.2.dylib at runtime.
       - formula: mpv

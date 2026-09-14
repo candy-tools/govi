@@ -24,7 +24,7 @@ import (
 	"gioui.org/unit"
 	"gioui.org/widget"
 	"gioui.org/widget/material"
-	"github.com/andresbott/govi/internal/logging"
+	"github.com/candy-tools/govi/internal/logging"
 	mpv "github.com/gen2brain/go-mpv"
 	"github.com/go-gl/gl/v3.1/gles2"
 	"github.com/go-gl/gl/v3.3-core/gl"

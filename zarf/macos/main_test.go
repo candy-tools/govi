@@ -131,3 +131,14 @@ func TestBuildIconFromRepoAssets(t *testing.T) {
 		t.Errorf("icon magic = %q, want icns", data[:4])
 	}
 }
+
+func TestBundleIDStable(t *testing.T) {
+	// The bundle ID keys macOS Launch Services identity; changing it makes every
+	// upgrade look like a different app. It was rebranded once during the
+	// candy-tools org migration and must not drift again — see
+	// docs/agents/releasing.md.
+	const want = "com.candy-tools.govi"
+	if bundleID != want {
+		t.Fatalf("bundleID = %q, want %q", bundleID, want)
+	}
+}

@@ -8,7 +8,7 @@ import (
 	"gioui.org/unit"
 	"gioui.org/widget/material"
 
-	"github.com/andresbott/govi/libs/trash"
+	"github.com/candy-tools/govi/libs/trash"
 )
 
 // currentPath returns the loaded file's path, or "" when idle / unavailable.

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/andresbott/govi/app/player"
+	"github.com/candy-tools/govi/app/player"
 )
 
 // The player must be handed the command's context, otherwise the SIGINT

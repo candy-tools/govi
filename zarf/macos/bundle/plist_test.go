@@ -11,7 +11,7 @@ import (
 func baseInfo() Info {
 	return Info{
 		Name:       "govi",
-		Identifier: "com.andresbott.govi",
+		Identifier: "com.candy-tools.govi",
 		Version:    "0.1.5",
 		Executable: "govi",
 		Icon:       "govi.icns",
@@ -86,7 +86,7 @@ func TestInfoPlistKeys(t *testing.T) {
 	tests := []struct{ key, want string }{
 		{"CFBundleName", "govi"},
 		{"CFBundleDisplayName", "govi"},
-		{"CFBundleIdentifier", "com.andresbott.govi"},
+		{"CFBundleIdentifier", "com.candy-tools.govi"},
 		{"CFBundleExecutable", "govi"},
 		{"CFBundleShortVersionString", "0.1.5"},
 		{"CFBundleVersion", "0.1.5"},
